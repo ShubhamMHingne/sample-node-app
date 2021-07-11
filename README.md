@@ -8,4 +8,4 @@ Sample node app for trying various openshift deployment strategies.
 ```oc new-app --name nodeapp2 https://github.com/ManojDhanorkar/sample-node-app```
 
 ### Docker image
-```oc new-app --name nodeapp3 thingsboard123/sample-node-app:v1```
+```oc new-app --name nodeapp3 quay.io/manojdhanorkar/sample-node-app:v1```
