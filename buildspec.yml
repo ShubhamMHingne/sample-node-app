@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  pre-build:
+    commands:
+      - echo Login to ECR
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/n6x0p3t9
+      - REPOSITORY_URI=public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild
+  build:
+    commands:
+      - echo Building docker image
+      - docker build -t public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild .
+  post-build:
+    commands:
+      - echo pushing docker image to ecr
+      - docker push public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild
