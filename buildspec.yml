@@ -8,6 +8,7 @@ phases:
   build:
     commands:
       - echo Building docker image
+      - helm version
       - docker build -t public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild .
   post_build:
     commands:
