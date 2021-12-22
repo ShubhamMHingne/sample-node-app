@@ -4,3 +4,7 @@ phases:
     commands:
       - echo Deploying Artifacts
       - helm version
+      - git version
+      - git clone https://github.com/ShubhamMHingne/sample-node-app.git
+      - cd sample-node-app
+      - ls -la
