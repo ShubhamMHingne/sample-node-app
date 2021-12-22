@@ -4,6 +4,7 @@ phases:
     commands:
       - echo Deploying Artifacts
       - helm version
+      - kubectl version
       - git version
       - git clone https://github.com/ShubhamMHingne/sample-node-app.git
       - cd sample-node-app
