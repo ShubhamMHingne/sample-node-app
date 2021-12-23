@@ -10,7 +10,7 @@ phases:
       - echo Building artifacts
       - mvn --version
       - npm --version
-      - docker container run --rm --name helm-version-check quay.io/shubham_hingne/modifiedubuntu:helmgitockubectl echo "-----helm version-----" && helm version && echo "--------" && echo "-----git version-----" && git version && echo "-----oc version-----" && oc version && echo "-----kubectl version-----" && kubectl version
+      #docker container run --rm --name helm-version-check quay.io/shubham_hingne/modifiedubuntu:helmgitockubectl echo "-----helm version-----" && helm version && echo "--------" && echo "-----git version-----" && git version && echo "-----oc version-----" && oc version && echo "-----kubectl version-----" && kubectl version
   post_build:
     commands:
       - docker image ls
