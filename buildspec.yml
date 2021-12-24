@@ -17,7 +17,7 @@ phases:
       - mvn --version
       - npm --version
       - helm version
-      - kubectl version
+      - kubectl version --client=true
       #docker container run --rm --name helm-version-check quay.io/shubham_hingne/modifiedubuntu:helmgitockubectl echo "-----helm version-----" && helm version && echo "--------" && echo "-----git version-----" && git version && echo "-----oc version-----" && oc version && echo "-----kubectl version-----" && kubectl version
   post_build:
     commands:
