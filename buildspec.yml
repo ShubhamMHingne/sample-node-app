@@ -5,11 +5,19 @@ phases:
       - echo Login to ECR
       - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/n6x0p3t9
       - REPOSITORY_URI=public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild
+      - echo installing Helm
+      - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+      - chmod 700 get_helm.sh
+      - ./get_helm.sh
+      - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+      - install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
   build:
     commands:
       - echo Building artifacts
       - mvn --version
       - npm --version
+      - helm version
+      - kubectl version
       #docker container run --rm --name helm-version-check quay.io/shubham_hingne/modifiedubuntu:helmgitockubectl echo "-----helm version-----" && helm version && echo "--------" && echo "-----git version-----" && git version && echo "-----oc version-----" && oc version && echo "-----kubectl version-----" && kubectl version
   post_build:
     commands:
