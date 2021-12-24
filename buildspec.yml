@@ -13,12 +13,18 @@ phases:
       - install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
   build:
     commands:
-      - echo Building artifacts
+      - echo Tools check
       - mvn --version
       - npm --version
       - helm version
+      - helm get -h
       - kubectl version --client=true
       #docker container run --rm --name helm-version-check quay.io/shubham_hingne/modifiedubuntu:helmgitockubectl echo "-----helm version-----" && helm version && echo "--------" && echo "-----git version-----" && git version && echo "-----oc version-----" && oc version && echo "-----kubectl version-----" && kubectl version
   post_build:
     commands:
       - docker image ls
+      - helm repo add bitnami https://charts.bitnami.com/bitnami
+      - helm search repo bitnami
+      - helm repo update
+      - helm install bitnami/mysql --generate-name
+      - helm list
