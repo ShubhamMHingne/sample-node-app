@@ -26,5 +26,5 @@ phases:
       - helm repo add bitnami https://charts.bitnami.com/bitnami
       - helm search repo bitnami
       - helm repo update
-      - helm install bitnami/mysql --generate-name
+      #helm install bitnami/mysql --generate-name
       - helm list
