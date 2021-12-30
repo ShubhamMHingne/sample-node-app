@@ -1,0 +1,40 @@
+apiVersion: v1
+clusters:
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://api.crc.testing:6443
+  name: api-crc-testing:6443
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://api.ocp-bootcamp-cluster.pslocplabs.com:6443
+  name: api-ocp-bootcamp-cluster-pslocplabs-com:6443
+contexts:
+- context:
+    cluster: api-ocp-bootcamp-cluster-pslocplabs-com:6443
+    user: shubham_hingne@persistent.com/api-ocp-bootcamp-cluster-pslocplabs-com:6443
+  name: /api-ocp-bootcamp-cluster-pslocplabs-com:6443/shubham_hingne@persistent.com
+- context:
+    cluster: api-crc-testing:6443
+    namespace: assignment-k8s
+    user: kubeadmin/api-crc-testing:6443
+  name: assignment-k8s/api-crc-testing:6443/kubeadmin
+- context:
+    cluster: api-crc-testing:6443
+    namespace: default
+    user: kubeadmin/api-crc-testing:6443
+  name: default/api-crc-testing:6443/kubeadmin
+- context:
+    cluster: api-ocp-bootcamp-cluster-pslocplabs-com:6443
+    namespace: sample-shubhamtest
+    user: shubham_hingne@persistent.com/api-ocp-bootcamp-cluster-pslocplabs-com:6443
+  name: sample-shubhamtest/api-ocp-bootcamp-cluster-pslocplabs-com:6443/shubham_hingne@persistent.com
+current-context: sample-shubhamtest/api-ocp-bootcamp-cluster-pslocplabs-com:6443/shubham_hingne@persistent.com
+kind: Config
+preferences: {}
+users:
+- name: kubeadmin/api-crc-testing:6443
+  user:
+    token: sha256~GkLZc0M79JOXrEqxDlRzpCnUhJwdemEF8pGjIExhdzQ
+- name: shubham_hingne@persistent.com/api-ocp-bootcamp-cluster-pslocplabs-com:6443
+  user:
+    token: sha256~m15mHqZSZVqyI30KXNx-m_PYkgxlAjcA8rBUl9lHZ0g
