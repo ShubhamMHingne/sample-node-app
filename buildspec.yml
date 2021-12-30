@@ -42,7 +42,7 @@ phases:
       - #helm search repo bitnami
       - #helm repo update
       #helm install bitnami/mysql --generate-name
-      - helm install firstchart samplenodeappchart -n sample-shubhamtest --kubeconfig=config
+      - helm upgrade firstchart samplenodeappchart -n sample-shubhamtest --kubeconfig=config
       - helm list
       - helm ls
       - helm history firstchart
