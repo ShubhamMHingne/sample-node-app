@@ -17,6 +17,7 @@ phases:
       - DATE=`date +%d%m%Y`
       - echo DATE is $DATE
       - cd sample-node-app
+      - chmod 600 config
       - mkdir ~/.kube
       - cp config ~/.kube/
       - chmod 755 ~/.kube
@@ -41,7 +42,7 @@ phases:
       - #helm search repo bitnami
       - #helm repo update
       #helm install bitnami/mysql --generate-name
-      - helm install firstchart samplenodeappchart -n sample-shubhamtest --kubeconfig=~/.kube/config
+      - helm install firstchart samplenodeappchart -n sample-shubhamtest --kubeconfig=config
       - helm list
       - helm ls
       - helm history firstchart
