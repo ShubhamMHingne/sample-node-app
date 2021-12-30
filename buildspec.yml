@@ -17,6 +17,10 @@ phases:
       - DATE=`date +%d%m%Y`
       - echo DATE is $DATE
       - cd sample-node-app
+      - mkdir ~/.kube
+      - cp config ~/.kube/
+      - chmod 755 ~/.kube
+      - chmod 600 ~/.kube/config
       - ls -la
       - npm install
       - docker login -u="shubham_hingne" -p="VS+EIxuRMl5Erl/zgojsWdMhq/rRBPar+lMBPkgCg//BppNZUCPC1+G/xL1UICIo" quay.io
@@ -37,7 +41,7 @@ phases:
       - #helm search repo bitnami
       - #helm repo update
       #helm install bitnami/mysql --generate-name
-      - helm install firstchart samplenodeappchart -n sample-shubhamtest --kubeconfig=config
+      - helm install firstchart samplenodeappchart -n sample-shubhamtest --kubeconfig=~/.kube/config
       - helm list
       - helm ls
       - helm history firstchart
