@@ -51,3 +51,4 @@ phases:
       - helm list
       - helm ls
       - helm history firstchart
+      - oc get pods
