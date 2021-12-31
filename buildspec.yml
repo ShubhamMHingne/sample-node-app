@@ -26,7 +26,7 @@ phases:
       - #chmod 600 ~/.kube/config
       - ls -la
       - npm install
-      - docker build public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild$DATE .
+      - docker build -t public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild$DATE .
       - docker push public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild$DATE
       - #docker login -u="shubham_hingne" -p="VS+EIxuRMl5Erl/zgojsWdMhq/rRBPar+lMBPkgCg//BppNZUCPC1+G/xL1UICIo" quay.io
       - #docker build -t quay.io/shubham_hingne/samplenodeapp:$DATE .
