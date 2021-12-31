@@ -41,7 +41,7 @@ phases:
       #docker container run --rm --name helm-version-check quay.io/shubham_hingne/modifiedubuntu:helmgitockubectl echo "-----helm version-----" && helm version && echo "--------" && echo "-----git version-----" && git version && echo "-----oc version-----" && oc version && echo "-----kubectl version-----" && kubectl version
   post_build:
     commands:
-      - oc login --token=sha256~_Xs2wZjfkyketwV4kwbFEdfUtniSzwcu37zy0iryNlU --server=https://api.ocp-bootcamp-cluster.pslocplabs.com:6443
+      - oc login --token=sha256~_Xs2wZjfkyketwV4kwbFEdfUtniSzwcu37zy0iryNlU --server=https://api.ocp-bootcamp-cluster.pslocplabs.com:6443 --insecure-skip-tls-verify=true
       - #docker image ls
       - #helm repo add bitnami https://charts.bitnami.com/bitnami
       - #helm search repo bitnami
