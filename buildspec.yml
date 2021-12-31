@@ -19,11 +19,11 @@ phases:
       - DATE=`date +%d%m%Y`
       - echo DATE is $DATE
       - cd sample-node-app
-      - chmod 600 config
-      - mkdir ~/.kube
-      - cp config ~/.kube/
-      - chmod 755 ~/.kube
-      - chmod 600 ~/.kube/config
+      - #chmod 600 config
+      - #mkdir ~/.kube
+      - #cp config ~/.kube/
+      - #chmod 755 ~/.kube
+      - #chmod 600 ~/.kube/config
       - ls -la
       - npm install
       - docker build public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild$DATE .
@@ -31,16 +31,16 @@ phases:
       - #docker login -u="shubham_hingne" -p="VS+EIxuRMl5Erl/zgojsWdMhq/rRBPar+lMBPkgCg//BppNZUCPC1+G/xL1UICIo" quay.io
       - #docker build -t quay.io/shubham_hingne/samplenodeapp:$DATE .
       - #docker push quay.io/shubham_hingne/samplenodeapp:$DATE
-      - echo Tools check
-      - mvn --version
+      # - echo Tools check
+      # - mvn --version
       - npm --version
       - helm version
-      - helm get -h
-      - kubectl version --client=true
+      # - helm get -h
+      # - kubectl version --client=true
       #docker container run --rm --name helm-version-check quay.io/shubham_hingne/modifiedubuntu:helmgitockubectl echo "-----helm version-----" && helm version && echo "--------" && echo "-----git version-----" && git version && echo "-----oc version-----" && oc version && echo "-----kubectl version-----" && kubectl version
   post_build:
     commands:
-      - oc login  https://api.ocp-bootcamp-cluster.pslocplabs.com:6443  -u shubham_hingne@persistent.com -p MTYyODcK
+      - oc login --token=sha256~_Xs2wZjfkyketwV4kwbFEdfUtniSzwcu37zy0iryNlU --server=https://api.ocp-bootcamp-cluster.pslocplabs.com:6443
       - #docker image ls
       - #helm repo add bitnami https://charts.bitnami.com/bitnami
       - #helm search repo bitnami
