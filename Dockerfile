@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/nginx-118:1-31.1626836575
+FROM node:current-alpine
 ENV USER_ID=1001
 USER root
 WORKDIR /usr/src/app
