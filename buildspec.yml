@@ -13,6 +13,7 @@ phases:
       - install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
       - wget https://github.com/openshift/okd/releases/download/4.9.0-0.okd-2021-12-12-025847/openshift-client-linux-4.9.0-0.okd-2021-12-12-025847.tar.gz
       - tar xvzf openshift-client-linux-4.9.0-0.okd-2021-12-12-025847.tar.gz
+      - cp oc /usr/local/bin
       - git clone https://github.com/ShubhamMHingne/sample-node-app.git
   build:
     commands:
