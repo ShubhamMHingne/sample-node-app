@@ -53,3 +53,4 @@ phases:
       - helm ls
       - helm history firstchart
       - oc get pods
+      - echo $OC_PASS
