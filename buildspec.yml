@@ -5,6 +5,7 @@ phases:
       - echo Login to ECR
       - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/n6x0p3t9
       - REPOSITORY_URI=public.ecr.aws/n6x0p3t9/openshift-sample-node-app-test:codepipelinebuild
+      - OC_USER=`aws secretsmanager get-secret-value --secret-id logintokenforokd_training --region ap-south-1 --query SecretString | awk -F '[:,]' '{printf $4}' | sed 's|["\}]||g'`
       - OC_PASS=`aws secretsmanager get-secret-value --secret-id logintokenforokd_training --region ap-south-1 --query SecretString | awk -F ":" '{printf $2}' | sed 's|["\}]||g'`
       - echo installing Helm
       - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -42,7 +43,7 @@ phases:
       #docker container run --rm --name helm-version-check quay.io/shubham_hingne/modifiedubuntu:helmgitockubectl echo "-----helm version-----" && helm version && echo "--------" && echo "-----git version-----" && git version && echo "-----oc version-----" && oc version && echo "-----kubectl version-----" && kubectl version
   post_build:
     commands:
-      - oc login  https://api.ocp-bootcamp-cluster.pslocplabs.com:6443  -u shubham_hingne@persistent.com -p $OC_PASS --insecure-skip-tls-verify=true
+      - oc login  https://api.ocp-bootcamp-cluster.pslocplabs.com:6443  -u $OC_USER -p $OC_PASS --insecure-skip-tls-verify=true
       - #docker image ls
       - #helm repo add bitnami https://charts.bitnami.com/bitnami
       - #helm search repo bitnami
