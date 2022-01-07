@@ -1,4 +1,4 @@
-FROM node:current-alpine
+FROM quay.io/shubham_hingne/gitea-operator:nodejs
 ENV USER_ID=1001
 USER root
 WORKDIR /usr/src/app
